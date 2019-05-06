@@ -1,3 +1,16 @@
+                        /******************************************************
+                         ******************************************************
+                          * Developed By :                                   *
+                          *       Aymen Teroiyet           ||  IPSAS   ||    * 
+                          *                             ||  G.inf1  ||       *    
+                          *            Omar Masmoudi                         * 
+                          *                                                  *
+                          *                 Abdallah Trabellsi               *
+                          *                                        2018-2019 *
+                         ******************************************************
+                         ******************************************************/
+
+
 package server;
 
 import javax.swing.*;
@@ -44,6 +57,9 @@ public class ClientChat implements Runnable{
                  
                   is =new BufferedReader(new InputStreamReader(socketClient.getInputStream()));
                  
+                  os.write(login);
+                  os.write("\r\n");
+                  os.flush();
  
 			
 		    		
@@ -52,25 +68,35 @@ public class ClientChat implements Runnable{
     
         b1.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent ev){
-                String s=login+" : "+tx.getText();  
+                String s1=login+" : ";
+                String s2=tx.getText();
                 tx.setText("");
                 try{
-                    os.write(s);
+                    os.write(s1);
                     os.write("\r\n");
                     os.flush(); 
-                    }catch(Exception e){e.printStackTrace();}
+                    os.write(s2);
+                    os.write("\r\n");
+                    os.flush();
+                    }
+                
+                catch(Exception e){e.printStackTrace();}
             }
           }
-        );       
+        );
+        
         f.setVisible(true);    
+        
+ 
     }
     public void run(){
              try{
                 String serverMsg=""; 
-                while((serverMsg = is.readLine()) != null){
+                while((serverMsg = is.readLine()) != null&&serverMsg.charAt(0)!=' '){
                     System.out.println("from server: " + serverMsg);
                     ta.append(serverMsg+"\n");
                 }
+                
         }catch(Exception e){e.printStackTrace();}   
     }
 }
