@@ -87,7 +87,7 @@ public void unicast(String data1 ,Vector clients,int index,int index2) {
        catch(Exception e){e.printStackTrace();}
     }
 public void multicast(String data1 ,Vector clients,int index) {
-
+	
     for (int i=0;i<clients.size();i++){
        try{
     	   if(i!=index) {
@@ -113,13 +113,13 @@ public void multicast(String data1 ,Vector clients,int index) {
                             clients.add(os); //for every client got connected we need to store its BufferedWriter object inside a Vector list
                             String user = "@"+is.readLine().trim();
                         	users.add(user); //for every client got connected we need to store its username  inside a Vector list     
-                        while(true){
+                            while(true){
                         	
-                        	String login="@"+is.readLine().trim(); //the sender !! //the trim() method to eliminate the leading and trailling spaces 
+                        	String login="@"+is.readLine(); //the sender !! //the trim() method to eliminate the leading and trailling spaces 
                         	String login1 = login ;
                             String data1 = is.readLine().trim();// the received message !!
                             String data2 = login.replace(String.valueOf(login.charAt(0)),"")+data1;
-                            System.out.println("Received : "+data1);
+                            System.out.println("Received : "+data2);
                             
                             if(data1.charAt(0)=='@') {
                            
@@ -139,7 +139,12 @@ public void multicast(String data1 ,Vector clients,int index) {
                             		    broadcast(data2,clients);
                             		} 
                             	else {
-                            		multicast(data2,clients,index(u(data1),users));
+                            		String data3=data1;
+                            		for(int j=0;j<=u(data3).length();j++) {
+                            		data1=data1.replace(String.valueOf(data1.charAt(0)),"");
+                            		}
+                            		data2 = login.replace(String.valueOf(login.charAt(0)),"")+data1;
+                            		multicast(data2,clients,index(u(data3),users));
                             		}
                             }
                             else {	
@@ -153,12 +158,12 @@ public void multicast(String data1 ,Vector clients,int index) {
         }
         public static void main(String argv[]) throws Exception{
             System.out.println("Threaded Chat Server is Running  " );
-            ServerSocket mysocket = new ServerSocket(8888);
+            ServerSocket mysocket = new ServerSocket(8888);// create a new object of type ServerSocket in listening on the port 8888
                 while(true){
-                Socket sock = mysocket.accept();
-                Satellite server=new Satellite(sock);
-                Thread serverThread=new Thread(server);
-                serverThread.start();
+                Socket sock = mysocket.accept(); // create a new object of type Socket the moment that server accept the establish connection 
+                Satellite server=new Satellite(sock); // create a new object of type Satellite (my server)
+                Thread serverThread=new Thread(server);// create a new object of type thread 
+                serverThread.start();// start the thread 
                 }
             }
 }
