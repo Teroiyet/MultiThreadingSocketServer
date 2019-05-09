@@ -52,12 +52,12 @@ public class ClientChat implements Runnable{
  
            
         try{
-                 Socket socketClient= new Socket("localhost",8888);//create an object of type Socket establish a connection to the server on the server's IP(in this case we use the localhost) and server's PORT (8888)
-                  os= new BufferedWriter(new OutputStreamWriter(socketClient.getOutputStream()));// bufferedWriter for the write(Mic) of string's data
+                  Socket socketClient= new Socket("localhost",8888);//create an object of type Socket establish a connection to the server on the server's IP(in this case we use the localhost) and server's PORT (8888)
+                  os= new BufferedWriter(new OutputStreamWriter(socketClient.getOutputStream()));// bufferedWriter for the write(Mic) data of type string 
                  
-                  is =new BufferedReader(new InputStreamReader(socketClient.getInputStream()));// bufferedReader for the read(SPEAKER) of string's data
+                  is =new BufferedReader(new InputStreamReader(socketClient.getInputStream()));// bufferedReader for the read(SPEAKER) data of type string 
                  
-                  os.write(login);// send the username to add it into the users's vector 
+                  os.write(login);// send the username of client to add it into the users's vector 
                   os.write("\r\n");
                   os.flush();
  
@@ -72,10 +72,10 @@ public class ClientChat implements Runnable{
                 String s2=tx.getText();
                 tx.setText("");
                 try{
-                    os.write(s1);// send the username to append it to the chat interface
+                    os.write(s1);// send the username of client to append it to the chat interface
                     os.write("\r\n");
                     os.flush(); 
-                    os.write(s2); // send the message
+                    os.write(s2); // send the message of client
                     os.write("\r\n");
                     os.flush();
                     }
