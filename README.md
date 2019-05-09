@@ -45,8 +45,10 @@ Each different machine will need to launch StartClient.class.
 ```
 
 ##CONTRIBUTING
-Interested in contributing? Contact (https://github.com/MasmoudiOmar || https://github.com/Teroiyet  || https://github.com/abdallahtrabelsi ) for help to get started.
 
+```
+Interested in contributing? Contact (https://github.com/MasmoudiOmar || https://github.com/Teroiyet  || https://github.com/abdallahtrabelsi ) for help to get started.
+```
 ##LISENCE
 ```
 Copyright (c) 2019 
