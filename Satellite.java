@@ -140,7 +140,7 @@ public void multicast(String data1 ,Vector clients,int index) {
                             		} 
                             	else {
                             		String data3=data1;
-                            		for(int j=0;j<=u(data3).length();j++) {
+                            		for(int j=1;j<=u(data3).length();j++) {
                             		data1=data1.replace(String.valueOf(data1.charAt(0)),"");
                             		}
                             		data2 = login.replace(String.valueOf(login.charAt(0)),"")+data1;
