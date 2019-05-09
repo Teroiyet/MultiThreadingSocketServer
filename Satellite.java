@@ -115,8 +115,8 @@ public void multicast(String data1 ,Vector clients,int index) {
                         	users.add(user); //for every client got connected we need to store its username  inside a Vector list     
                             while(true){
                         	
-                        	String login="@"+is.readLine(); //the sender !! //the trim() method to eliminate the leading and trailling spaces 
-                        	String login1 = login ;
+                            String login="@"+is.readLine().trim()+" "; //the sender !! //the trim() method to eliminate the leading and trailling spaces 
+                            String login1 = login ;
                             String data1 = is.readLine().trim();// the received message !!
                             String data2 = login.replace(String.valueOf(login.charAt(0)),"")+data1;
                             System.out.println("Received : "+data2);
